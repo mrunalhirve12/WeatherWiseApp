@@ -17,6 +17,7 @@ import {
 } from 'reactstrap';
 import { Switch, Route, BrowserRouter, NavLink } from 'react-router-dom'
 import Weather from './Weather';
+import Forecast from './Forecast';
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends Component {
 
     this.state = {
        weather: null,
+       forecast: null,
        cityList: [],
        newCityName: '',
        isToggleOn: false,
@@ -65,8 +67,22 @@ class App extends Component {
     });
   };
 
+  getForecast = (city) => {
+    fetch(`/api/forecast/${city}`)
+    .then(res => res.json())
+    .then(forecast => {
+      console.log(forecast);
+      this.setState({ forecast });
+    });
+  };
+
   handleChangeCity = (e) => {
-    this.getWeather(e.target.value);
+    if (this.state.isToggleOn) {
+      this.getForecast(e.target.value);
+    }
+    else {
+      this.getWeather(e.target.value);
+    }
   };
 
   handleClick  = (e) => {
@@ -116,7 +132,7 @@ class App extends Component {
             </Button>
           </Col>
         </Row>
-        {this.state.isToggleOn ? <Weather data={this.state.weather}/> : <Weather data={this.state.weather}/>}
+        {this.state.isToggleOn ? <Forecast data={this.state.forecast}/> : <Weather data={this.state.weather}/>  }
       </Container>
     );
   }
