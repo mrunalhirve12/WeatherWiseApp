@@ -98,9 +98,6 @@ class App extends Component {
   render() {
     return (
       <Container fluid className="centered">
-        <Navbar dark color="dark">
-          <NavbarBrand href="/">WeatherWise</NavbarBrand>
-        </Navbar>
         <Row>
           <Col>
             <Jumbotron>
