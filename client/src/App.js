@@ -134,6 +134,7 @@ class App extends Component {
         </Row>
         {this.state.isToggleOn ? <Forecast data={this.state.forecast}/> : <Weather data={this.state.weather}/>  }
       </Container>
+
     );
   }
 }
