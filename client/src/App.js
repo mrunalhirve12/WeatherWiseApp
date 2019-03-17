@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import logo from './sun.png';
 import {
   Container,
   Nav,
@@ -46,16 +46,18 @@ class App extends Component {
   };
 
   handleAddCity = () => {
-    fetch('/api/cities', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ city: this.state.newCityName })
-    })
-    .then(res => res.json())
-    .then(res => {
-      this.getCityList();
-      this.setState({ newCityName: '' });
-    });
+     if (this.state.newCityName) {
+      fetch('/api/cities', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ city: this.state.newCityName })
+      })
+      .then(res => res.json())
+      .then(res => {
+        this.getCityList();
+        this.setState({ newCityName: '' });
+      });
+    }
   };
 
   getWeather = (city) => {
@@ -102,8 +104,9 @@ class App extends Component {
         <Row>
           <Col>
             <Jumbotron>
-              <h1 className="display-3">MyWeather</h1>
-              <p className="lead">The current weather for your favorite cities!</p>
+
+            <img src = {logo} className = "logo"/>
+            <h3 className = "display-3">WeatherWise</h3>
               <InputGroup>
                 <Input
                   placeholder="New city name..."
