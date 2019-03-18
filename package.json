@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
     "server": "nodemon server",
-    "stop": "pkill --signal SIGINT myApp"
+    "stop": "pkill --signal SIGINT myApp",
+    "start": "node server",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [
     "react"
@@ -18,11 +20,18 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "create-react-app": "^2.1.8",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "pg": "^7.8.2",
+    "react-moment": "^0.8.4",
     "reactstrap": "^7.1.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
+  "engines": {
+    "node":"10.15.1"
+  },
+  
   "devDependencies": {
     "concurrently": "^4.1.0",
     "cookie-parser": "^1.4.4",
