@@ -5,23 +5,24 @@ This project is created using:
 4. DataBase: PostGreSql
 
 # Steps for running the application
+1. Clone the repo on your machine
 
-1. Create a postgres Database locally, that defines city table as follows
+2. Create a postgres Database locally, that defines city table as follows
 ##### `create table cities ( id serial NOT NULL, city_name character varying(50) NOT NULL,  PRIMARY KEY(id), UNIQUE(city_name) )`;
 
-2. In the project directory, in server/database/index.js, define the connection to the database:
+3. In the project directory, in server/database/index.js, define the connection to the database:
 E.g. on my machine I am using as:
 ##### `const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:123@localhost:5432/weather-db';`
 
 ##### `const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://[USERNAME]:[PASSWORD]@localhost:5432/[DATABASE_NAME]';`
 
-3. Mention your API key in server/models/forecast.js
+4. Mention your API key(from OpenMapWeatherAPI) in server/models/forecast.js
 ##### `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=[YOUR_API_KEY]&units=imperial`
 
-4. Also add your API key in server/models/weather.js
+5. Also add your API key(from OpenMapWeatherAPI) in server/models/weather.js
 ##### `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=[YOUR_API_KEY]&units=imperial`
 
-5. This completes your setup locally, to start the application
+6. This completes your setup locally, to start the application
 ##### `npm run dev`
 
 This will run your server and client side concurrently
