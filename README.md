@@ -7,7 +7,7 @@ This project is created using:
 # Steps for running the application
 1. Clone the repo on your machine
 
-2. Create a postgres Database locally, that defines city table as follows
+2. Create a postgres Database on pgadmin4, that defines city table as follows
 ##### `create table cities ( id serial NOT NULL, city_name character varying(50) NOT NULL,  PRIMARY KEY(id), UNIQUE(city_name) )`;
 
 3. In the project directory, in server/database/index.js, define the connection to the database:
